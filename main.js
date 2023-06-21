@@ -5,8 +5,6 @@ const developKey = 'eyJwZGY0MTdrZXkiOiJrMVlRNW1YY1Vtc0k1NGgyWnQwRklCcnhCeEEwYk5N
 const prodKey = ''
 
 const config = {
-    networkUrl: 'dist/networks',
-    chunkPublicPath: 'dist/networks',
     useCDN: false,
     licenseKey: developKey,
     fixFrontOrientAfterUpload: true,
