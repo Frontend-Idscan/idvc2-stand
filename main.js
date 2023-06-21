@@ -51,7 +51,7 @@ const config = {
             type: 'InternationalId',
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'back', name: 'Passport Front', mode: { uploader: true, video: true } },
+                { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
                 { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
