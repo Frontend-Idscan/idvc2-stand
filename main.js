@@ -20,7 +20,7 @@ const config = {
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
                 { type: 'pdf', name: 'Document PDF417 Barcode', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
         {
@@ -28,7 +28,7 @@ const config = {
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
                 { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
         {
@@ -36,7 +36,7 @@ const config = {
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
                 { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
         {
@@ -44,7 +44,7 @@ const config = {
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
                 { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
         {
@@ -52,7 +52,7 @@ const config = {
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
                 { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
     ],
