@@ -6,7 +6,7 @@ const prodKey = 'eyJwZGY0MTdrZXkiOiJIY1lGUWE4M3pUWjIxRXpadFJleGpXMUpvZkFHNFRhRGV
 
 const config = {
     useCDN: false,
-    licenseKey: prodKey,
+    licenseKey: developKey,
     fixFrontOrientAfterUpload: true,
     el: "videoCapturingEl",
     isShowDocumentTypeSelect: false,
