@@ -13,7 +13,7 @@ const config = {
     isShowGuidelinesButton: false,
     resizeUploadedImage: 1500,
     autoContinue: true,
-    realFaceMode: 'none',
+    realFaceMode: 'auto',
     documentTypes: [
         {
             type: 'ID',
