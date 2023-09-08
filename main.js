@@ -6,7 +6,7 @@ const prodKey = 'eyJwZGY0MTdrZXkiOiJIY1lGUWE4M3pUWjIxRXpadFJleGpXMUpvZkFHNFRhRGV
 
 const config = {
     useCDN: false,
-    licenseKey: prodKey,
+    licenseKey: developKey,
     fixFrontOrientAfterUpload: true,
     el: "videoCapturingEl",
     isShowDocumentTypeSelect: false,
@@ -18,17 +18,17 @@ const config = {
         {
             type: 'ID',
             steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: false, video: true } },
-                { type: 'pdf', name: 'Document PDF417 Barcode', mode: { uploader: false, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: false, video: true } }
+                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+                { type: 'back', name: 'Document PDF417 Barcode', mode: { uploader: true, video: true } },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
         {
             type: 'Passport',
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                // { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
         {
@@ -36,7 +36,7 @@ const config = {
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
                 { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
         {
@@ -44,7 +44,7 @@ const config = {
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
                 { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
         {
@@ -52,7 +52,7 @@ const config = {
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
                 { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
-                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
     ],
