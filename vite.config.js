@@ -3,7 +3,7 @@ import copy from 'rollup-plugin-copy';
 import mkcert from 'vite-plugin-mkcert'
 
 export default defineConfig({
-  server: { https: true },
+  server: { https: true, port: 5666 },
   plugins: [
     copy({
       targets: [
