@@ -65,6 +65,7 @@ const config = {
     onChange(data) {
         console.log('onChange');
         console.log(data);
+        alert(data)
     }
 }
 
