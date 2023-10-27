@@ -65,7 +65,7 @@ const config = {
     onChange(data) {
         console.log('onChange');
         console.log(data);
-        alert(JSON.stringify(data.img.slice(10)))
+        alert('onChange')
     }
 }
 
