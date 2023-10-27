@@ -17,28 +17,28 @@ const config = {
     autoContinue: true,
     realFaceMode: 'auto',
     documentTypes: [
-        {
-            type: 'ID',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'back', name: 'Document PDF417 Barcode', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
-        },
-        {
-            type: 'Passport',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                // { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
-        },
+        // {
+        //     type: 'ID',
+        //     steps: [
+        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+        //         { type: 'back', name: 'Document PDF417 Barcode', mode: { uploader: true, video: true } },
+        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+        //     ]
+        // },
+        // {
+        //     type: 'Passport',
+        //     steps: [
+        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+        //         // { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
+        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+        //     ]
+        // },
         {
             type: 'PassportCard',
             steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                { type: 'front', name: 'Document Front', mode: { uploader: true, video: false } },
+                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: false } },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: false } }
             ]
         },
         {
