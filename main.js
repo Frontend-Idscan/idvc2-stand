@@ -36,9 +36,9 @@ const config = {
         {
             type: 'PassportCard',
             steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+                { type: 'front', name: 'Document Front', mode: { uploader: true, video: false } },
+                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: false } },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: false } }
             ]
         },
         {
