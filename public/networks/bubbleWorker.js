@@ -1,1 +1,220 @@
-var __webpack_exports__={},generateFaceColorFromAngle=function(t){var n=Math.abs(Math.trunc(255-t));return n>200&&(n=200),n<50&&(n=50),"rgba(255,215,".concat(n.toString(),",0.3)")},binarize=function(t){var n,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:120,o=t.width*t.height,i=new Uint8ClampedArray(o),r=0,a=0;for(n=0;n<o;n+=1){var u=n<<2;77*(r=t.data[u+0])+151*t.data[u+1]+28*t.data[u+2]>>8<e&&(i[n]=1)}return i},topPoint=function(t,n){return t-n},bottomPoint=function(t,n){return t+n},leftPoint=function(t,n){return t%n>1?t-1:-1},rightPoint=function(t,n){return(t+1)%n>=0?t+1:-1},topLeftPoint=function(t,n){return leftPoint(topPoint(t,n),n)},topRightPoint=function(t,n){return rightPoint(topPoint(t,n),n)},bottomLeftPoint=function(t,n){return leftPoint(bottomPoint(t,n),n)},bottomRightPoint=function(t,n){return rightPoint(bottomPoint(t,n),n)},getNeigbors=function(t,n){return[topLeftPoint,topPoint,topRightPoint,rightPoint,bottomRightPoint,bottomPoint,bottomLeftPoint,leftPoint].map(function(e){return e(t,n)})},segmentize2=function(t,n){var e,o=[],i=[],r=t.length,a=0;for(e=0;e<r;e+=1)0!==t[e]&&(i[a]=new Set,o.push(e),function(){for(;o.length;){var e=o.pop();if(!e)break;t[e]=0,i[a].add(e),getNeigbors(e,n).forEach(function(n){n>0&&0!==t[n]&&n<r&&o.push(n)})}}(),a+=1);return i},getResizedSizes=function(t,n){var e=n.baseWidth,o=n.baseHeight,i=t,r=t;return e>o&&(r=(i=t)*o/e),o>e&&(i=(r=t)*e/o),{width:Math.trunc(i),height:Math.trunc(r)}},getCrop=function(t,n){var e=t.width/t.height,o=n.width/n.height,i={x:0,y:0,width:n.width,height:n.height};return e>o?(i.height=~~(n.width/e),i.y=(n.height-i.height)/2):(i.width=~~(i.height*e),i.x=(n.width-i.width)/2),i},POINT_FILL_STYLE="rgba(255, 255, 255, 0.5)",POINT_STROKE_STYLE="rgba(255, 255, 255, 0)",SCALE_FACTOR=.3,getColumn=function(t,n){return t%n},getRow=function(t,n){return Math.floor(t/n)},createCoordFromPointIdx=function(t,n){return[getColumn(t,n),getRow(t,n)]},notNull=function(t){return null!=t},coordinateSegment=function(t){var n=t.segments,e=t.width,o=t.scaleWidth,i=t.scaleHeight;return n.map(function(t){var n=Number.MAX_VALUE,r=Number.MAX_VALUE,a=Number.MIN_VALUE,u=Number.MIN_VALUE;t.forEach(function(t){var o=createCoordFromPointIdx(t,e);o[0]<n&&(n=o[0]),o[1]<r&&(r=o[1]),o[0]>a&&(a=o[0]),o[1]>u&&(u=o[1])});var h=(a-n)*(u-r);return h>5&&h<500?{perimeter:h,x1:Math.trunc(n/SCALE_FACTOR/o),y1:Math.trunc(r/SCALE_FACTOR/i),x2:Math.trunc(a/SCALE_FACTOR/o),y2:Math.trunc(u/SCALE_FACTOR/i)}:null}).filter(notNull)},pointsProcess=function(t,n,e){return coordinateSegment({segments:segmentize2(binarize(t),t.width),width:t.width,scaleWidth:n,scaleHeight:e})};onmessage=function(t){var n=t.data;if(n&&n.iData){var e=pointsProcess(n.iData,n.resizedToBorderScaleWidth,n.resizedToBorderScaleHeight);postMessage({segments:e})}};
+var __webpack_exports__ = {};
+
+;// CONCATENATED MODULE: ./src/helpers/image.ts
+var generateFaceColorFromAngle = function(angle) {
+    var color = Math.abs(Math.trunc(255 - angle));
+    if (color > 200) color = 200;
+    if (color < 50) color = 50;
+    return "rgba(255,215,".concat(color.toString(), ",0.3)");
+};
+/**
+ *
+ * @param {ImageData} iData
+ * @param {number} threshold
+ * @return number[] - black and whited array;
+ */ var binarize = function(iData) {
+    var threshold = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 120;
+    var setColor = 1;
+    var len = iData.width * iData.height;
+    var result = new Uint8ClampedArray(len);
+    var i;
+    var red = 0;
+    var green = 0;
+    var blue = 0;
+    var gray = 0;
+    for(i = 0; i < len; i += 1){
+        // eslint-disable-next-line no-bitwise
+        var n = i << 2; // fast version of i * 4
+        red = iData.data[n + 0];
+        green = iData.data[n + 1];
+        blue = iData.data[n + 2];
+        // eslint-disable-next-line no-bitwise
+        gray = 77 * red + 151 * green + 28 * blue >> 8;
+        if (gray < threshold) {
+            result[i] = setColor;
+        }
+    }
+    return result;
+};
+var topPoint = function(position, width) {
+    return position - width;
+};
+var bottomPoint = function(position, width) {
+    return position + width;
+};
+var leftPoint = function(position, width) {
+    return position % width > 1 ? position - 1 : -1;
+};
+var rightPoint = function(position, width) {
+    return (position + 1) % width >= 0 ? position + 1 : -1;
+};
+var topLeftPoint = function(position, width) {
+    return leftPoint(topPoint(position, width), width);
+};
+var topRightPoint = function(position, width) {
+    return rightPoint(topPoint(position, width), width);
+};
+var bottomLeftPoint = function(position, width) {
+    return leftPoint(bottomPoint(position, width), width);
+};
+var bottomRightPoint = function(position, width) {
+    return rightPoint(bottomPoint(position, width), width);
+};
+var getNeigbors = function(position, width) {
+    return [
+        topLeftPoint,
+        topPoint,
+        topRightPoint,
+        rightPoint,
+        bottomRightPoint,
+        bottomPoint,
+        bottomLeftPoint,
+        leftPoint
+    ].map(function(fn) {
+        return fn(position, width);
+    });
+};
+var segmentize2 = function(binarizedImg, width) {
+    var queue = [];
+    var segments = [];
+    var imgLen = binarizedImg.length;
+    var segmentIdx = 0;
+    var pixelIdx;
+    var search = function() {
+        var isValidPixel = function(el) {
+            return el > 0 && binarizedImg[el] !== 0 && el < imgLen;
+        };
+        while(queue.length){
+            var centerPixelIdx = queue.pop();
+            if (!centerPixelIdx) break;
+            // eslint-disable-next-line no-param-reassign
+            binarizedImg[centerPixelIdx] = 0;
+            segments[segmentIdx].add(centerPixelIdx);
+            getNeigbors(centerPixelIdx, width).forEach(function(el) {
+                if (isValidPixel(el)) {
+                    queue.push(el);
+                }
+            });
+        }
+    };
+    for(pixelIdx = 0; pixelIdx < imgLen; pixelIdx += 1){
+        // eslint-disable-next-line no-continue
+        if (binarizedImg[pixelIdx] === 0) continue;
+        segments[segmentIdx] = new Set();
+        queue.push(pixelIdx);
+        search();
+        segmentIdx += 1;
+    }
+    return segments;
+};
+var getResizedSizes = function(size, param) {
+    var baseWidth = param.baseWidth, baseHeight = param.baseHeight;
+    var width = size;
+    var height = size;
+    if (baseWidth > baseHeight) {
+        width = size;
+        height = width * baseHeight / baseWidth;
+    }
+    if (baseHeight > baseWidth) {
+        height = size;
+        width = height * baseWidth / baseHeight;
+    }
+    return {
+        width: Math.trunc(width),
+        height: Math.trunc(height)
+    };
+};
+var getCrop = function(src, dst) {
+    var srcWidth = src.width;
+    var srcHeight = src.height;
+    var aspectRatioSrc = srcWidth / srcHeight; // float
+    var aspectRatioDst = dst.width / dst.height; // float
+    var targetCrop = {
+        x: 0,
+        y: 0,
+        width: dst.width,
+        height: dst.height
+    };
+    if (aspectRatioSrc > aspectRatioDst) {
+        targetCrop.height = ~~(dst.width / aspectRatioSrc);
+        targetCrop.y = (dst.height - targetCrop.height) / 2;
+    } else {
+        targetCrop.width = ~~(targetCrop.height * aspectRatioSrc);
+        targetCrop.x = (dst.width - targetCrop.width) / 2;
+    }
+    return targetCrop;
+};
+
+;// CONCATENATED MODULE: ./src/constatnts/imageProcessing.ts
+var POINT_FILL_STYLE = 'rgba(255, 255, 255, 0.5)';
+var POINT_STROKE_STYLE = 'rgba(255, 255, 255, 0)';
+var SCALE_FACTOR = 0.3;
+
+;// CONCATENATED MODULE: ./src/workers/bubbleWorker.ts
+
+
+var getColumn = function(d, w) {
+    return d % w;
+};
+var getRow = function(d, w) {
+    return Math.floor(d / w);
+};
+var createCoordFromPointIdx = function(pixelPosition, width) {
+    return [
+        getColumn(pixelPosition, width),
+        getRow(pixelPosition, width)
+    ];
+};
+var notNull = function(value) {
+    return value !== null && value !== undefined;
+};
+var coordinateSegment = function(param) {
+    var segments = param.segments, width = param.width, scaleWidth = param.scaleWidth, scaleHeight = param.scaleHeight;
+    var MIN_PERIMETER = 5;
+    var MAX_PERIMETER = 500;
+    return segments.map(function(segment) {
+        var minX = Number.MAX_VALUE; // ignoring case of empty list for conciseness
+        var minY = Number.MAX_VALUE;
+        var maxX = Number.MIN_VALUE;
+        var maxY = Number.MIN_VALUE;
+        segment.forEach(function(position) {
+            var coord = createCoordFromPointIdx(position, width);
+            if (coord[0] < minX) minX = coord[0];
+            if (coord[1] < minY) minY = coord[1];
+            if (coord[0] > maxX) maxX = coord[0];
+            if (coord[1] > maxY) maxY = coord[1];
+        });
+        var per = (maxX - minX) * (maxY - minY);
+        if (per > MIN_PERIMETER && per < MAX_PERIMETER) {
+            return {
+                perimeter: per,
+                x1: Math.trunc(minX / SCALE_FACTOR / scaleWidth),
+                y1: Math.trunc(minY / SCALE_FACTOR / scaleHeight),
+                x2: Math.trunc(maxX / SCALE_FACTOR / scaleWidth),
+                y2: Math.trunc(maxY / SCALE_FACTOR / scaleHeight)
+            };
+        }
+        return null;
+    }).filter(notNull);
+};
+var pointsProcess = function(iData, scaleWidth, scaleHeight) {
+    var bin = binarize(iData);
+    return coordinateSegment({
+        segments: segmentize2(bin, iData.width),
+        width: iData.width,
+        scaleWidth: scaleWidth,
+        scaleHeight: scaleHeight
+    });
+};
+onmessage = function(param) {
+    var data = param.data;
+    if (data && data.iData) {
+        var segments = pointsProcess(data.iData, data.resizedToBorderScaleWidth, data.resizedToBorderScaleHeight);
+        postMessage({
+            segments: segments
+        });
+    }
+};
+
+
+//# sourceMappingURL=bubbleWorker.js.016a0a2a.349.map

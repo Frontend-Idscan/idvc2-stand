@@ -1,1 +1,536 @@
-(self.webpackChunk_idscan_idvc2=self.webpackChunk_idscan_idvc2||[]).push([[423],{3457:(t,e,n)=>{n.r(e),n.d(e,{default:()=>Z});var r=n(6827),o=n(4554),i=n(7286),u=n(8736),a=n(6955),c=n(813),l=n(528),f=n(683),s=n(7672);function h(t){if(void 0===t)throw ReferenceError("this hasn't been initialised - super() hasn't been called");return t}function p(t,e,n,r,o,i,u){try{var a=t[i](u),c=a.value}catch(t){n(t);return}a.done?e(c):Promise.resolve(c).then(r,o)}function b(t){return function(){var e=this,n=arguments;return new Promise(function(r,o){var i=t.apply(e,n);function u(t){p(i,r,o,u,a,"next",t)}function a(t){p(i,r,o,u,a,"throw",t)}u(void 0)})}}function v(t,e){if(!(t instanceof e))throw TypeError("Cannot call a class as a function")}function y(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function d(t,e,n){return e&&y(t.prototype,e),n&&y(t,n),t}function w(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}function g(t){return(g=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function m(t,e){if("function"!=typeof e&&null!==e)throw TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&x(t,e)}function S(t,e){return e&&("object"===k(e)||"function"==typeof e)?e:h(t)}function x(t,e){return(x=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function k(t){return t&&"undefined"!=typeof Symbol&&t.constructor===Symbol?"symbol":typeof t}function P(){if("undefined"==typeof Reflect||!Reflect.construct||Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){})),!0}catch(t){return!1}}function _(t){var e=P();return function(){var n,r=g(t);if(e){var o=g(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return S(this,n)}}function O(t,e){var n,r,o,i,u={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:a(0),throw:a(1),return:a(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function a(i){return function(a){return function(i){if(n)throw TypeError("Generator is already executing.");for(;u;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return u.label++,{value:i[1],done:!1};case 5:u.label++,r=i[1],i=[0];continue;case 7:i=u.ops.pop(),u.trys.pop();continue;default:if(!(o=(o=u.trys).length>0&&o[o.length-1])&&(6===i[0]||2===i[0])){u=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){u.label=i[1];break}if(6===i[0]&&u.label<o[1]){u.label=o[1],o=i;break}if(o&&u.label<o[2]){u.label=o[2],u.ops.push(i);break}o[2]&&u.ops.pop(),u.trys.pop();continue}i=e.call(t,u)}catch(t){i=[6,t],r=0}finally{n=o=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,a])}}}var z=320,R=320,j=[1,320,320,3],T="serving_default_input_2:0",E="StatefulPartitionedCall:0",I="StatefulPartitionedCall:1",C=function(t){"use strict";m(n,t);var e=_(n);function n(){var t,r=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:c.z.WASM,i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:"";return v(this,n),w(h(t=e.call(this,r,o,i)),"canvasSize",{width:1,height:1}),t}return d(n,[{key:"setSizes",value:function(t){var e=t.height,n=t.width;this.canvasSize.width=n,this.canvasSize.height=e}},{key:"predict",value:function(t){var e=w({},T,new u.Tensor("float32",t,j));return this.session.run(e)}},{key:"predictFromImage",value:function(t,e,n,r){var o=this;return b(function(){var i,u,a,c,s;return O(this,function(h){switch(h.label){case 0:if(o.loading)return[2,[]];return i=o.createSrc(t,"angles-input-canvas"),u=e||(0,l.vL)("angles-canvas",{width:z,height:R}),a=(0,l.SI)(i,u,n,r),c=(0,f.Di)(a,f.eQ.WITHOUT),[4,o.predict(c)];case 1:return s=h.sent(),o.setSizes(i),[2,o.interpret(s[I].data,s[E].data)]}})})()}},{key:"interpret",value:function(t,e){var n={side:"None",bbox:{topLeft:{x:0,y:0},bottomRight:{x:1,y:1}},perimeterInPercents:{width:0,height:0}},r=[];return t.forEach(function(t,e){return r.push({label:s.mR[e],score:t})}),n.side=r.sort(function(t,e){return e.score-t.score})[0].label,n.bbox.topLeft.x=~~(e[0]*this.canvasSize.width),n.bbox.topLeft.y=~~(e[1]*this.canvasSize.height),n.bbox.bottomRight.x=~~(e[2]*this.canvasSize.width),n.bbox.bottomRight.y=~~(e[3]*this.canvasSize.height),n.perimeterInPercents.width=~~((e[2]-e[0])*100),n.perimeterInPercents.height=~~((e[3]-e[1])*100),n}}]),n}(a.Z);function L(t,e,n,r,o,i,u){try{var a=t[i](u),c=a.value}catch(t){n(t);return}a.done?e(c):Promise.resolve(c).then(r,o)}function M(t){return function(){var e=this,n=arguments;return new Promise(function(r,o){var i=t.apply(e,n);function u(t){L(i,r,o,u,a,"next",t)}function a(t){L(i,r,o,u,a,"throw",t)}u(void 0)})}}function W(t,e){var n,r,o,i,u={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:a(0),throw:a(1),return:a(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function a(i){return function(a){return function(i){if(n)throw TypeError("Generator is already executing.");for(;u;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return u.label++,{value:i[1],done:!1};case 5:u.label++,r=i[1],i=[0];continue;case 7:i=u.ops.pop(),u.trys.pop();continue;default:if(!(o=(o=u.trys).length>0&&o[o.length-1])&&(6===i[0]||2===i[0])){u=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){u.label=i[1];break}if(6===i[0]&&u.label<o[1]){u.label=o[1],o=i;break}if(o&&u.label<o[2]){u.label=o[2],u.ops.push(i);break}o[2]&&u.ops.pop(),u.trys.pop();continue}i=e.call(t,u)}catch(t){i=[6,t],r=0}finally{n=o=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,a])}}}let Z=M(function(){var t;return W(this,function(e){return t=new C("".concat(o.t.cK),c.z.WASM,r.Z.networkUrl),i.Z.setModule("model","classLocal",t),[2,[t.initialize.bind(t)]]})})}}]);
+(self["webpackChunk_idscan_idvc2"] = self["webpackChunk_idscan_idvc2"] || []).push([[423],{
+
+/***/ 3457:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ loaderClassLocal)
+});
+
+// EXTERNAL MODULE: ./src/context.ts + 54 modules
+var context = __webpack_require__(6827);
+// EXTERNAL MODULE: ./src/environment/networkNames.json
+var networkNames = __webpack_require__(4554);
+// EXTERNAL MODULE: ./src/controllers/ModuleController.ts + 1 modules
+var ModuleController = __webpack_require__(7286);
+// EXTERNAL MODULE: ./node_modules/onnxruntime-web/dist/ort-web.min.js
+var ort_web_min = __webpack_require__(8736);
+// EXTERNAL MODULE: ./src/neural models/neuralModel.ts
+var neuralModel = __webpack_require__(6955);
+// EXTERNAL MODULE: ./src/neural models/Provider.ts
+var Provider = __webpack_require__(813);
+// EXTERNAL MODULE: ./src/helpers/canvas.ts
+var canvas = __webpack_require__(528);
+// EXTERNAL MODULE: ./src/helpers/color.ts
+var color = __webpack_require__(683);
+// EXTERNAL MODULE: ./src/neural models/classLocal/exits.ts
+var exits = __webpack_require__(7672);
+;// CONCATENATED MODULE: ./src/neural models/classLocalModel.ts
+function _assert_this_initialized(self) {
+    if (self === void 0) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return self;
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _class_call_check(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
+}
+function _defineProperties(target, props) {
+    for(var i = 0; i < props.length; i++){
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+    }
+}
+function _create_class(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+}
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _get_prototype_of(o) {
+    _get_prototype_of = Object.setPrototypeOf ? Object.getPrototypeOf : function getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+    };
+    return _get_prototype_of(o);
+}
+function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function");
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+        constructor: {
+            value: subClass,
+            writable: true,
+            configurable: true
+        }
+    });
+    if (superClass) _set_prototype_of(subClass, superClass);
+}
+function _possible_constructor_return(self, call) {
+    if (call && (_type_of(call) === "object" || typeof call === "function")) {
+        return call;
+    }
+    return _assert_this_initialized(self);
+}
+function _set_prototype_of(o, p) {
+    _set_prototype_of = Object.setPrototypeOf || function setPrototypeOf(o, p) {
+        o.__proto__ = p;
+        return o;
+    };
+    return _set_prototype_of(o, p);
+}
+function _type_of(obj) {
+    "@swc/helpers - typeof";
+    return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
+}
+function _is_native_reflect_construct() {
+    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+    if (Reflect.construct.sham) return false;
+    if (typeof Proxy === "function") return true;
+    try {
+        Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}));
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+function _create_super(Derived) {
+    var hasNativeReflectConstruct = _is_native_reflect_construct();
+    return function _createSuperInternal() {
+        var Super = _get_prototype_of(Derived), result;
+        if (hasNativeReflectConstruct) {
+            var NewTarget = _get_prototype_of(this).constructor;
+            result = Reflect.construct(Super, arguments, NewTarget);
+        } else {
+            result = Super.apply(this, arguments);
+        }
+        return _possible_constructor_return(this, result);
+    };
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+
+
+
+
+
+var BATCH = 1;
+var WIDTH = 320;
+var HEIGHT = 320;
+var COLOR_COUNT = 3;
+var INPUT_TENSOR_DIMS = [
+    BATCH,
+    HEIGHT,
+    WIDTH,
+    COLOR_COUNT
+];
+// const OUTPUT_TENSOR = [1, 8] as const;
+var INPUT_TENSOR_NAME = 'serving_default_input_2:0';
+var OUTPUT_TENSOR_NAME_BBOX = 'StatefulPartitionedCall:0';
+var OUTPUT_TENSOR_NAME_CLASSIFIER = 'StatefulPartitionedCall:1';
+var ClassLocalModel = /*#__PURE__*/ function(NeuralModel) {
+    "use strict";
+    _inherits(ClassLocalModel, NeuralModel);
+    var _super = _create_super(ClassLocalModel);
+    function ClassLocalModel() {
+        var url = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : '', provider = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : Provider/* Provider.WASM */.z.WASM, wasmPaths = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : '';
+        _class_call_check(this, ClassLocalModel);
+        var _this;
+        _this = _super.call(this, url, provider, wasmPaths);
+        _define_property(_assert_this_initialized(_this), "canvasSize", {
+            width: 1,
+            height: 1
+        });
+        return _this;
+    }
+    _create_class(ClassLocalModel, [
+        {
+            key: "setSizes",
+            value: function setSizes(param) {
+                var height = param.height, width = param.width;
+                this.canvasSize.width = width;
+                this.canvasSize.height = height;
+            }
+        },
+        {
+            key: "predict",
+            value: function predict(rgb) {
+                var inputTensor = new ort_web_min.Tensor('float32', rgb, INPUT_TENSOR_DIMS);
+                var feeds = _define_property({}, INPUT_TENSOR_NAME, inputTensor);
+                return this.session.run(feeds);
+            }
+        },
+        {
+            key: "predictFromImage",
+            value: function predictFromImage(input, dstCanvas, offsets, cropSizes) {
+                var _this = this;
+                return _async_to_generator(function() {
+                    var src, dst, resized, buf, predicted;
+                    return _ts_generator(this, function(_state) {
+                        switch(_state.label){
+                            case 0:
+                                if (_this.loading) {
+                                    return [
+                                        2,
+                                        []
+                                    ];
+                                }
+                                src = _this.createSrc(input, 'angles-input-canvas');
+                                dst = dstCanvas || (0,canvas/* createCanvas */.vL)('angles-canvas', {
+                                    width: WIDTH,
+                                    height: HEIGHT
+                                });
+                                resized = (0,canvas/* resize */.SI)(src, dst, offsets, cropSizes);
+                                buf = (0,color/* rgbaToRgb */.Di)(resized, color/* Normalization.WITHOUT */.eQ.WITHOUT);
+                                return [
+                                    4,
+                                    _this.predict(buf)
+                                ];
+                            case 1:
+                                predicted = _state.sent();
+                                _this.setSizes(src);
+                                return [
+                                    2,
+                                    _this.interpret(predicted[OUTPUT_TENSOR_NAME_CLASSIFIER].data, predicted[OUTPUT_TENSOR_NAME_BBOX].data)
+                                ];
+                        }
+                    });
+                })();
+            }
+        },
+        {
+            key: "interpret",
+            value: function interpret(classifierData, bboxData) {
+                var res = {
+                    side: 'None',
+                    bbox: {
+                        topLeft: {
+                            x: 0,
+                            y: 0
+                        },
+                        bottomRight: {
+                            x: 1,
+                            y: 1
+                        }
+                    },
+                    perimeterInPercents: {
+                        width: 0,
+                        height: 0
+                    }
+                };
+                var predictionList = [];
+                classifierData.forEach(function(val, idx) {
+                    return predictionList.push({
+                        label: exits/* exits */.mR[idx],
+                        score: val
+                    });
+                });
+                res.side = predictionList.sort(function(a, b) {
+                    return b.score - a.score;
+                })[0].label;
+                res.bbox.topLeft.x = ~~(bboxData[0] * this.canvasSize.width);
+                res.bbox.topLeft.y = ~~(bboxData[1] * this.canvasSize.height);
+                res.bbox.bottomRight.x = ~~(bboxData[2] * this.canvasSize.width);
+                res.bbox.bottomRight.y = ~~(bboxData[3] * this.canvasSize.height);
+                res.perimeterInPercents.width = ~~((bboxData[2] - bboxData[0]) * 100);
+                res.perimeterInPercents.height = ~~((bboxData[3] - bboxData[1]) * 100);
+                return res;
+            }
+        }
+    ]);
+    return ClassLocalModel;
+}(neuralModel/* default */.Z);
+
+;// CONCATENATED MODULE: ./src/loader/loaderClassLocal.ts
+function loaderClassLocal_asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function loaderClassLocal_async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                loaderClassLocal_asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                loaderClassLocal_asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function loaderClassLocal_ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+
+
+
+
+/* harmony default export */ const loaderClassLocal = (/*#__PURE__*/loaderClassLocal_async_to_generator(function() {
+    var classLocalModel;
+    return loaderClassLocal_ts_generator(this, function(_state) {
+        classLocalModel = new ClassLocalModel("".concat(networkNames/* neurons.classLocalModel */.t.cK), Provider/* Provider.WASM */.z.WASM, context/* default.networkUrl */.Z.networkUrl);
+        ModuleController/* default.setModule */.Z.setModule('model', 'classLocal', classLocalModel);
+        return [
+            2,
+            [
+                classLocalModel.initialize.bind(classLocalModel)
+            ]
+        ];
+    });
+}));
+
+
+/***/ })
+
+}])
+//# sourceMappingURL=ClassLocal-chunk.js.016a0a2a.423.map
