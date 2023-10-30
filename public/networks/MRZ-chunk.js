@@ -1201,15 +1201,12 @@ function MrzModule_ts_generator(thisArg, body) {
                     return MrzModule_ts_generator(this, function(_state) {
                         switch(_state.label){
                             case 0:
-                                alert('detectMrz');
-                                debugger;
                                 return [
                                     4,
                                     _this.scan(imageData)
                                 ];
                             case 1:
                                 mrzResults = _state.sent();
-                                alert('AFTER detectMrz');
                                 res1 = {};
                                 // eslint-disable-next-line guard-for-in,no-restricted-syntax
                                 for(var prop in mrzResults){
@@ -1443,4 +1440,4 @@ function loaderMRZ_ts_generator(thisArg, body) {
 /***/ })
 
 }])
-//# sourceMappingURL=MRZ-chunk.js.016a0a2a.343.map
+//# sourceMappingURL=MRZ-chunk.js.2bd04ec9.343.map
