@@ -8,7 +8,7 @@ const sharedDevelopKey = 'ew0KICAicGRmNDE3a2V5IjogIkwzQ0FOWTFVaURXK1JpZDlUZnI0cE
 
 const config = {
     useCDN: false,
-    licenseKey: prodKey,
+    licenseKey: sharedDevelopKey,
     fixFrontOrientAfterUpload: true,
     el: "videoCapturingEl",
     isShowDocumentTypeSelect: false,
@@ -17,28 +17,28 @@ const config = {
     autoContinue: true,
     realFaceMode: 'auto',
     documentTypes: [
-        // {
-        //     type: 'ID',
-        //     steps: [
-        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-        //         { type: 'back', name: 'Document PDF417 Barcode', mode: { uploader: true, video: true } },
-        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-        //     ]
-        // },
-        // {
-        //     type: 'Passport',
-        //     steps: [
-        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-        //         // { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-        //     ]
-        // },
+        {
+            type: 'ID',
+            steps: [
+                { type: 'front', name: 'Document Front', enableDesktopNotification: true, autocaptureDelay: 5000 },
+                { type: 'pdf', name: 'Document Back', enableDesktopNotification: true, mode: { uploader: false, video: false }, autocaptureDelay: 5000 },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: false }, autocaptureDelay: 0 },
+            ],
+        },
+        {
+            type: 'Passport',
+            steps: [
+                // { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+            ]
+        },
         {
             type: 'PassportCard',
             steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: false } },
-                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: false } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: false } }
+                { type: 'front', name: 'Document Front'},
+                { type: 'mrz', name: 'Passport Front' },
+                { type: 'face', name: 'Face' }
             ]
         },
         {
@@ -65,7 +65,6 @@ const config = {
     onChange(data) {
         console.log('onChange');
         console.log(data);
-        alert(`data: ${data?.step?.mrzText}`)
     }
 }
 
