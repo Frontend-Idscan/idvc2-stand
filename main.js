@@ -8,7 +8,7 @@ const sharedDevelopKey = 'ew0KICAicGRmNDE3a2V5IjogIkwzQ0FOWTFVaURXK1JpZDlUZnI0cE
 
 const config = {
     useCDN: false,
-    licenseKey: sharedDevelopKey,
+    licenseKey: prodKey,
     fixFrontOrientAfterUpload: true,
     el: "videoCapturingEl",
     isShowDocumentTypeSelect: false,
@@ -21,8 +21,8 @@ const config = {
             type: 'ID',
             steps: [
                 { type: 'front', name: 'Document Front', enableDesktopNotification: true, autocaptureDelay: 5000 },
-                { type: 'pdf', name: 'Document Back', enableDesktopNotification: true, mode: { uploader: false, video: false }, autocaptureDelay: 5000 },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: false }, autocaptureDelay: 0 },
+                { type: 'pdf', name: 'Document Back', enableDesktopNotification: true, mode: { uploader: true, video: true }, autocaptureDelay: 5000 },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true }, autocaptureDelay: 0 },
             ],
         },
         {
