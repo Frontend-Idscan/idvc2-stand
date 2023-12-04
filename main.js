@@ -20,9 +20,9 @@ const config = {
         {
             type: 'ID',
             steps: [
-                { type: 'front', name: 'Document Front', enableDesktopNotification: true, autocaptureDelay: 5000 },
-                { type: 'pdf', name: 'Document Back', enableDesktopNotification: true, mode: { uploader: true, video: true }, autocaptureDelay: 5000 },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true }, autocaptureDelay: 0 },
+                // { type: 'front', name: 'Document Front', enableDesktopNotification: true, autocaptureDelay: 5000 },
+                { type: 'pdf', name: 'Document Back', mode: { uploader: true, video: true } },
+                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } },
             ],
         },
         {
