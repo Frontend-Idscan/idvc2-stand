@@ -21,7 +21,7 @@ const config = {
             type: 'ID',
             steps: [
                 { type: 'front', name: 'Document Front',  },
-                // { type: 'pdf', name: 'Document Back', mode: { uploader: true, video: true } },
+                { type: 'pdf', name: 'Document Back', mode: { uploader: true, video: true } },
                 // { type: 'face', name: 'Face', mode: { uploader: true, video: true } },
             ],
         },
