@@ -7,56 +7,99 @@ const prodKey = 'eyJwZGY0MTdrZXkiOiJIY1lGUWE4M3pUWjIxRXpadFJleGpXMUpvZkFHNFRhRGV
 const sharedDevelopKey = 'ew0KICAicGRmNDE3a2V5IjogIkwzQ0FOWTFVaURXK1JpZDlUZnI0cEVJZ1kxdnRzNnRPbysycGE2dFR4cFIvbmlBTTk4NDN0ejdDaHpKOXNQZ29hS3Urc280Y3BiMHZyMVJ1QlBlSWhYRXRNanZIZ0haSnBxUFZzU01XS3VQaXFaaERlWGpkWDkxRVVBeHB0cWs4S2dpVDh2NnlhdTBMOEwrR3dJQXp2S3NWT0ZiK1ArSFh6RHBKVThpOE14dz0iLA0KICAiaW1hZ2VQcm9jZXNzaW5nS2V5IjogIkNIdlBYNEVVRjExMlFYV1FvVHVSNThwWFNTOUs0TDlyb3NnQndnckF6eklVb2ZNV3lFM2RLRUI0ZDQzb2l2eUYxcnQzd3dXamhGbVVjeTlQbVdpVzg2NEs2bytkNzFUK1IxOS9aaFNieDNJR0g4QUtnSEpIcktSWUxYOWtJUUc5NU51c1RwTUpndExXK1puc29PZGxRRFRmVVFibG9zQTNRaE42akpJSU5KUT0iLA0KICAidHJhY2tTdHJpbmdQYXJzZXJLZXkiOiAiT3d3cnBXWEV5d1YxK3NZUUFtU2kwdW11akhraDV2U2Ixd0paV3B0SXk2MG5YR0l2NytBNHpyaHdEaTFtWkF3Q1BYcmJ0ZndIcTAwZnBFOEh0ZTVVZks1Y3ZOMWYxWnFoU3o0MGdPSStuNzNwNzlJUDhlVGNPRklDbGhheVZwU2lBR2RvaUtNZFc5M2w5cE5PamZxeFZDN2hqUlBHQ21mWS9vS3VUSEdzTDhvPSIsDQogICJjb21tb25MaWNlbnNlS2V5IjogImVqTTkwZENta3h6QXFTQlNaNVUxTFB3OTNwcmo4cU9mK3ZEcjlRZ0ZhTTdhcTdOVm1jNGJBQXJVMEk0R0FaeDllbk9ENkp1cTlyZlgzcXdkdW9waUgrNjNsQUgxaUlzeDBEZDJGTldlNGVLRUxMVE83d3NJL2IycUtCa0xNTUloS2JsdmNJbE9yVWtoU01tWHRzeEwrekhOUVJHTldzdGNjMVNhZUgyS0JIND0iLA0KICAiaU9TTVJaRGV0ZWN0b3JLZXkiOiAiRjJIUXBaNm10a1hVUU9FaEJYajFjWGxlUGpoQjI2UWdNOUpPVE1mekQ5NEtONStXMUdNY2huVHdVeVV3NTB3ZGFrT2FJWFlGWnFHUVZueUl0VnV3eTR1dElLdXdPU0tqOEhrMGIvZk5Ca3BrbGpXb1lqQnNNRDZFWWZUa2ZMb3JSSUhsbGtLOU5HVFJFNmpSRUV1OVdleHFjK3pDK2pFL1NCL0ZBemhkMDZFPSIsDQogICJpT1NQREZEZXRlY3RvcktleSI6ICIxQjBLLkIxUDBNNU8uRzdJNE4uTDFEMkExTHdDdE9lSSINCn0='
 
 const config = {
-    useCDN: false,
     licenseKey: prodKey,
-    fixFrontOrientAfterUpload: true,
     el: "videoCapturingEl",
-    isShowDocumentTypeSelect: false,
-    isShowGuidelinesButton: false,
-    resizeUploadedImage: 1500,
+    resizeUploadedImage: 2000,
+    fixFrontOrientAfterUpload: true,
+    useCDN: false,
+    isSubmitMetaData: true,
+    useHeic: true,
+
+    // showSubmitBtn: false,
+    // hideDocumentTitle: false,
+    // isShowGuidelinesButton: false,
+    // autoContinue: false,
+    // isShowDocumentTypeSelect: false,
+    showSubmitBtn: true,
+    hideDocumentTitle: true,
+    isShowGuidelinesButton: true,
     autoContinue: true,
-    realFaceMode: 'auto',
+    isShowDocumentTypeSelect: true,
+
+    // language setting
+    language: "en",
+    //language: "es",
+
+    // liveness check
+    realFaceMode: "auto",
+    //realFaceMode: "none",
+    //realFaceMode: "all",
+
+    // modal position
+    //modalPosition: 'center',
+    //modalPosition: 'bottom',
+    //modalPosition: 'top',
+    modalPosition: 'sticky-top',
+
+    //processingImageFormat: 'jpeg',
+    processingImageFormat: 'png',
+    // processingImageFormat: 'webp',
     documentTypes: [
         {
-            type: 'ID',
+            type: "Passport",
             steps: [
-                { type: 'front', name: 'Document Front',  },
-                { type: 'pdf', name: 'Document Back', mode: { uploader: true, video: true } },
-                // { type: 'face', name: 'Face', mode: { uploader: true, video: true } },
+                {
+                    type: "mrz",
+                    name: "Passport's Frontside Image",
+                    mode: { uploader: true, video: true }
+                },
+                {
+                    type: "face",
+                    name: "User's Selfie",
+                    mode: { uploader: true, video: true }
+                },
             ],
         },
         {
-            type: 'Passport',
+            type: "ID",
             steps: [
-                // { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
+                {
+                    type: "front",
+                    name: "Document's Frontside Image",
+                    mode: { uploader: true, video: true },
+                    autocaptureDelay: 5000,
+                    enableDesktopNotification: true
+                },
+                {
+                    type: "pdf",
+                    name: "Document's Barcode Image",
+                    mode: { uploader: true, video: true },
+                    autocaptureDelay: 5000,
+                    enableDesktopNotification: true
+                },
+                {
+                    type: "face",
+                    name: "User's Selfie",
+                    mode: { uploader: true, video: true }
+                },
+            ],
         },
-        {
-            type: 'PassportCard',
-            steps: [
-                { type: 'front', name: 'Document Front'},
-                { type: 'mrz', name: 'Passport Front' },
-                { type: 'face', name: 'Face' }
-            ]
-        },
-        {
-            type: 'GreenCard',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
-        },
-        {
-            type: 'InternationalId',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
-        },
+        // {
+        //     type: 'GreenCard',
+        //     steps: [
+        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+        //         { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
+        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+        //     ]
+        // },
+        // {
+        //     type: 'InternationalId',
+        //     steps: [
+        //         // { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+        //         { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
+        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+        //     ]
+        // },
     ],
     submit(data) {
         console.log('submit');
