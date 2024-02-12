@@ -11,7 +11,7 @@ const config = {
     el: "videoCapturingEl",
     resizeUploadedImage: 2000,
     fixFrontOrientAfterUpload: true,
-    useCDN: false,
+    useCDN: true,
     isSubmitMetaData: true,
     useHeic: true,
     // chunkPublicPath: 'https://localhost:3000/',
@@ -33,18 +33,18 @@ const config = {
     //language: "es",
 
     // liveness check
-    realFaceMode: "auto",
+    realFaceMode: "all",
     //realFaceMode: "none",
     //realFaceMode: "all",
 
     // modal position
-    //modalPosition: 'center',
+    modalPosition: 'center',
     //modalPosition: 'bottom',
     //modalPosition: 'top',
-    modalPosition: 'sticky-top',
+    // modalPosition: 'sticky-top',
 
     //processingImageFormat: 'jpeg',
-    processingImageFormat: 'png',
+    // processingImageFormat: 'png',
     // processingImageFormat: 'webp',
     documentTypes: [
         {
@@ -86,22 +86,22 @@ const config = {
                 },
             ],
         },
-        // {
-        //     type: 'GreenCard',
-        //     steps: [
-        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-        //         { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-        //     ]
-        // },
-        // {
-        //     type: 'InternationalId',
-        //     steps: [
-        //         // { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-        //         { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
-        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-        //     ]
-        // },
+        {
+            type: 'GreenCard',
+            steps: [
+                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+            ]
+        },
+        {
+            type: 'InternationalId',
+            steps: [
+                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+                { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+            ]
+        },
     ],
     submit(data) {
         console.log('submit');
