@@ -14,6 +14,8 @@ const config = {
     useCDN: false,
     isSubmitMetaData: true,
     useHeic: true,
+    // chunkPublicPath: 'https://localhost:3000/',
+    // networkUrl: 'https://localhost:3000/',
 
     // showSubmitBtn: false,
     // hideDocumentTitle: false,
@@ -21,7 +23,7 @@ const config = {
     // autoContinue: false,
     // isShowDocumentTypeSelect: false,
     showSubmitBtn: true,
-    hideDocumentTitle: true,
+    hideDocumentTitle: false,
     isShowGuidelinesButton: true,
     autoContinue: true,
     isShowDocumentTypeSelect: true,
@@ -73,8 +75,8 @@ const config = {
                 {
                     type: "pdf",
                     name: "Document's Barcode Image",
-                    mode: { uploader: true, video: true },
-                    autocaptureDelay: 5000,
+                    mode: { uploader: false, video: true },
+                    autocaptureDelay: 1000,
                     enableDesktopNotification: true
                 },
                 {
