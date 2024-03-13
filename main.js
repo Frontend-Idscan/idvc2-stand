@@ -11,7 +11,7 @@ const config = {
     el: "videoCapturingEl",
     resizeUploadedImage: 2000,
     fixFrontOrientAfterUpload: true,
-    useCDN: true,
+    useCDN: false,
     isSubmitMetaData: true,
     useHeic: true,
     // chunkPublicPath: 'https://localhost:3000/',
@@ -25,8 +25,8 @@ const config = {
     showSubmitBtn: true,
     hideDocumentTitle: false,
     isShowGuidelinesButton: true,
-    autoContinue: true,
-    isShowDocumentTypeSelect: true,
+    autoContinue: false,
+    isShowDocumentTypeSelect: false,
 
     // language setting
     language: "en",
@@ -47,21 +47,21 @@ const config = {
     // processingImageFormat: 'png',
     // processingImageFormat: 'webp',
     documentTypes: [
-        {
-            type: "Passport",
-            steps: [
-                {
-                    type: "mrz",
-                    name: "Passport's Frontside Image",
-                    mode: { uploader: true, video: true }
-                },
-                {
-                    type: "face",
-                    name: "User's Selfie",
-                    mode: { uploader: true, video: true }
-                },
-            ],
-        },
+        // {
+        //     type: "Passport",
+        //     steps: [
+        //         {
+        //             type: "mrz",
+        //             name: "Passport's Frontside Image",
+        //             mode: { uploader: true, video: true }
+        //         },
+        //         {
+        //             type: "face",
+        //             name: "User's Selfie",
+        //             mode: { uploader: true, video: true }
+        //         },
+        //     ],
+        // },
         {
             type: "ID",
             steps: [
@@ -69,14 +69,14 @@ const config = {
                     type: "front",
                     name: "Document's Frontside Image",
                     mode: { uploader: true, video: true },
-                    autocaptureDelay: 5000,
+                    autocaptureDelay: 0,
                     enableDesktopNotification: true
                 },
                 {
                     type: "pdf",
                     name: "Document's Barcode Image",
                     mode: { uploader: false, video: true },
-                    autocaptureDelay: 1000,
+                    autocaptureDelay: 0,
                     enableDesktopNotification: true
                 },
                 {
@@ -86,22 +86,22 @@ const config = {
                 },
             ],
         },
-        {
-            type: 'GreenCard',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
-        },
-        {
-            type: 'InternationalId',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
-        },
+        // {
+        //     type: 'GreenCard',
+        //     steps: [
+        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+        //         { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
+        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+        //     ]
+        // },
+        // {
+        //     type: 'InternationalId',
+        //     steps: [
+        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+        //         { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
+        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+        //     ]
+        // },
     ],
     submit(data) {
         console.log('submit');
