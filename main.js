@@ -95,6 +95,14 @@ const config = {
             ]
         },
         {
+            type: 'PassportCard',
+            steps:[
+                { type: 'front', name: 'document front', autocaptureDelay: 0 },
+                { type: 'mrz', name: 'passport back', enableDesktopNotification: true, mode: { uploader: true, video: true }, autocaptureDelay: 0 },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true }, autocaptureDelay: 0 }
+            ],
+        },
+        {
             type: 'InternationalId',
             steps: [
                 { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
