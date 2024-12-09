@@ -6,3 +6,18 @@ body {
 #app {
   margin: 0 auto;
 }
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.idvc-button {
+  padding: 14px;
+  font-size: 16px;
+  background: white;
+  cursor: pointer;
+}
