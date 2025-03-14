@@ -9,112 +9,104 @@ const sharedDevelopKey = 'ew0KICAicGRmNDE3a2V5IjogIkwzQ0FOWTFVaURXK1JpZDlUZnI0cE
 const config = {
     licenseKey: prodKey,
     el: "videoCapturingEl",
-    resizeUploadedImage: 2000,
+    autoContinue: true,
     fixFrontOrientAfterUpload: true,
+    realFaceMode: 'all', // none, auto, all
     useCDN: false,
-    isSubmitMetaData: true,
     useHeic: true,
-    // chunkPublicPath: 'https://localhost:3000/',
-    // networkUrl: 'https://localhost:3000/',
-
-    // showSubmitBtn: false,
-    // hideDocumentTitle: false,
-    // isShowGuidelinesButton: false,
-    // autoContinue: false,
-    // isShowDocumentTypeSelect: false,
-    showSubmitBtn: true,
-    hideDocumentTitle: false,
+    resizeUploadedImage: 1400,
+    isShowDocumentTypeSelect: true,
+    autoStart: true,
+    allowSubmitWithWarnings: true,
     isShowGuidelinesButton: true,
-    autoContinue: false,
-    isShowDocumentTypeSelect: false,
-
-    // language setting
-    language: "en",
-    //language: "es",
-
-    // liveness check
-    realFaceMode: "all",
-    //realFaceMode: "none",
-    //realFaceMode: "all",
-
-    // modal position
+    showSubmitBtn: true,
+    playPreviewAnimations: false,
+    language: 'en',
+    networkUrl: 'networks', // Всегда должно быть таким значением для режима разработки
+    // из-за того, что чанки должны лежать в той же директории, что и idvc.js файл
+    captureTimeout: 22,
     modalPosition: 'center',
-    //modalPosition: 'bottom',
-    //modalPosition: 'top',
-    // modalPosition: 'sticky-top',
-
-    //processingImageFormat: 'jpeg',
-    // processingImageFormat: 'png',
-    // processingImageFormat: 'webp',
+    autocaptureConfidence: 0.8,
     documentTypes: [
         {
-            type: "ID",
+            type: 'DL',
             steps: [
-                {
-                    type: "front",
-                    name: "Document Front",
-                    mode: { uploader: true, video: true },
-                    autocaptureDelay: 0,
-                    enableDesktopNotification: true
-                },
-                {
-                    type: "pdf",
-                    name: "Document's Barcode Image",
-                    mode: { uploader: true, video: true },
-                    autocaptureDelay: 0,
-                    enableDesktopNotification: true
-                },
-                {
-                    type: "face",
-                    name: "User's Selfie",
-                    mode: { uploader: true, video: true }
-                },
+                { type: 'front', name: 'Document\'s Front Image', mode: { uploader: false, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000 },
+                { type: 'pdf', name: 'Document\'s Back Image', enableFourCornerCapture: true, enableDesktopNotification: true, mode: { uploader: false, video: true }, autocaptureDelay: 0 },
+                { type: 'face', name: 'User\ Selfie', mode: { uploader: false, video: true } },
             ],
         },
         {
-            type: "Passport",
+            type: 'IC',
             steps: [
-                {
-                    type: "mrz",
-                    name: "Passport's Front Image",
-                    mode: { uploader: true, video: true }
-                },
-                {
-                    type: "face",
-                    name: "User's Selfie",
-                    mode: { uploader: true, video: true }
-                },
+                { type: 'front', name: 'Document\'s Front Image', mode: { uploader: true, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000 },
+                { type: 'pdf', name: 'Document\'s Back Image', enableFourCornerCapture: true, enableDesktopNotification: true, mode: { uploader: true, video: true }, autocaptureDelay: 0 },
+                { type: 'face', name: 'User\ Selfie', mode: { uploader: true, video: true } },
+            ],
+        },
+        // {
+        //   type: 'DL',
+        //   steps: [
+        //     { type: 'front',
+        //         name: 'Document\'s Front Image',
+        //         mode: { uploader: false, video: true },
+        //         enableDesktopNotification: true,
+        //         autocaptureDelay: 2000
+        //     },
+        //     { type: 'pdf',
+        //         name: 'Document\'s Back Image',
+        //         enableFourCornerCapture: true,
+        //         enableDesktopNotification: true,
+        //         mode: { uploader: false, video: true },
+        //         autocaptureDelay: 0
+        //     },
+        //     { type: 'face',
+        //         name: 'User\ Selfie',
+        //         mode: { uploader: false, video: true },
+        //     },
+        //   ],
+        // },
+        // {
+        //   type: 'VIN',
+        //   steps:[
+        //     { type: 'photo', name: 'VIN' },
+        //   ],
+        // },
+        {
+            type: 'Barcode',
+            steps:[
+                { type: 'barcode', name: 'Barcode detection' },
             ],
         },
         {
-            type: 'GreenCard',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'mrz', name: 'Passport Front', mode: { uploader: true, video: true } },
+            type: 'Passport',
+            steps:[
+                // { type: 'front', name: 'Passport Front' },
+                { type: 'mrz', name: 'Passport MRZ', enableFourCornerCapture: true, mode: { uploader: true, video: true } },
                 { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
+            ],
         },
         {
             type: 'PassportCard',
             steps:[
-                { type: 'front', name: 'document front', autocaptureDelay: 0 },
-                { type: 'mrz', name: 'passport back', enableDesktopNotification: true, mode: { uploader: true, video: true }, autocaptureDelay: 0 },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true }, autocaptureDelay: 0 }
+                { type: 'front', name: 'Document Card Front' },
+                { type: 'mrz', name: 'Passport Card Back', enableFourCornerCapture: true, mode: { uploader: true, video: true } },
+                { type: 'face', name: 'User Selfie', mode: { uploader: true, video: true } }
             ],
         },
         {
-            type: 'EmploymentAuthorization',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
+            type: 'GreenCard',
+            steps:[
+                { type: 'front', name: 'Document Front' },
                 { type: 'mrz', name: 'Passport Back', mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } },
+                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ],
         },
         {
             type: 'InternationalId',
             steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true } },
-                { type: 'back', name: 'Passport Back', mode: { uploader: true, video: true } },
+                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true }, enableDesktopNotification: true, autocaptureDelay: 3000 },
+                { type: 'back', name: 'International Back', enableFourCornerCapture: true, mode: { uploader: true, video: true } },
                 { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ]
         },
