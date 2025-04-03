@@ -102,14 +102,14 @@ const config = {
                 { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
             ],
         },
-        {
-            type: 'InternationalId',
-            steps: [
-                { type: 'front', name: 'Document Front', mode: { uploader: true, video: true }, enableDesktopNotification: true, autocaptureDelay: 3000 },
-                { type: 'back', name: 'International Back', enableFourCornerCapture: true, mode: { uploader: true, video: true } },
-                { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-            ]
-        },
+        // {
+        //     type: 'InternationalId',
+        //     steps: [
+        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true }, enableDesktopNotification: true, autocaptureDelay: 3000 },
+        //         { type: 'back', name: 'International Back', enableFourCornerCapture: true, mode: { uploader: true, video: true } },
+        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
+        //     ]
+        // },
     ],
     submit(data) {
         console.log('submit');
