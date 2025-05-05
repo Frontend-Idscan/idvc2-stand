@@ -111,7 +111,7 @@ const config = {
         //     ]
         // },
     ],
-    submit(data) {
+    async submit(data) {
         console.log('submit');
         console.log(data);
 
