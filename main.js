@@ -111,40 +111,44 @@ const config = {
         //     ]
         // },
     ],
-    async submit(data) {
+    submit(data) {
         console.log('submit');
         console.log(data);
 
-        const {steps} = data;
-        const videoBlob = steps.find(_ => Boolean(_.videoBlob))?.videoBlob;
+        (async () => {
+            const {steps} = data;
+            const videoBlob = steps.find(_ => Boolean(_.videoBlob))?.videoBlob;
 
-        if (!videoBlob) {
-            console.warn('No videoBlob found in steps');
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('file', videoBlob, 'recording.webm');
-
-        const API_URL = 'http://datasink.idscan.loc/DataSet';
-
-        const url = new URL(API_URL);
-        url.searchParams.append('idempotencyKey', Date.now().toString());
-
-        url.searchParams.append('fileExtension', 'webm');
-
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            if (!videoBlob) {
+                console.warn('No videoBlob found in steps');
+                return;
             }
-        } catch (error) {
-            console.error('Error uploading file:', error);
-        }
+
+            const formData = new FormData();
+            formData.append('file', videoBlob, 'recording.webm');
+
+            const API_URL = 'http://datasink.idscan.loc/DataSet';
+
+            const url = new URL(API_URL);
+            url.searchParams.append('idempotencyKey', Date.now().toString());
+
+            url.searchParams.append('fileExtension', 'webm');
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+            } catch (error) {
+                console.error('Error uploading file:', error);
+            }
+        })()
+
+
     },
     onChange(data) {
         console.log('onChange');
