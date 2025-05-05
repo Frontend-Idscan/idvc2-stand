@@ -31,8 +31,8 @@ const config = {
         {
             type: 'DL',
             steps: [
-                { type: 'front', name: 'Document\'s Front Image', mode: { uploader: false, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000 },
-                { type: 'pdf', name: 'Document\'s Back Image', enableFourCornerCapture: true, enableDesktopNotification: true, mode: { uploader: false, video: true }, autocaptureDelay: 0 },
+                // { type: 'front', name: 'Document\'s Front Image', mode: { uploader: false, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000 },
+                // { type: 'pdf', name: 'Document\'s Back Image', enableFourCornerCapture: true, enableDesktopNotification: true, mode: { uploader: false, video: true }, autocaptureDelay: 0 },
                 { type: 'face', name: 'User\ Selfie', mode: { uploader: false, video: true } },
             ],
         },
