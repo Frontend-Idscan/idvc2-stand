@@ -124,7 +124,7 @@ const config = {
             const formData = new FormData();
             formData.append('file', videoBlob, 'recording.webm');
 
-            const API_URL = 'https://datasink.idscan.loc/DataSet';
+            const API_URL = 'https://datasink.idscan.net/DataSet';
 
             const url = new URL(API_URL);
             url.searchParams.append('idempotencyKey', Date.now().toString());
@@ -135,7 +135,6 @@ const config = {
                 const response = await fetch(url, {
                     headers: {
                         'Authorization': 'Bearer 2214B3F4-208B-40F3-92BE-782E99E4F9E5',
-                        'Content-Type': 'application/octet-stream',
                     },
                     method: 'POST',
                     body: formData,
@@ -146,6 +145,7 @@ const config = {
                 }
             } catch (error) {
                 console.error('Error uploading file:', error);
+                alert(`Error uploading file: ${error.message}`);  // Шаблонная строка для объединения
             }
         })()
 
