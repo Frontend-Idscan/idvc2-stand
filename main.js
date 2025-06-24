@@ -28,9 +28,9 @@ const config = {
         {
             type: 'DL',
             steps: [
-                // { type: 'front', name: 'Document\'s Front Image', mode: { uploader: false, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000 },
+                { type: 'front', name: 'Document\'s Front Image', mode: { uploader: false, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000, shouldRecordVideo: true },
                 // { type: 'pdf', name: 'Document\'s Back Image', enableFourCornerCapture: true, enableDesktopNotification: true, mode: { uploader: false, video: true }, autocaptureDelay: 0 },
-                { type: 'face', name: 'User\ Selfie', mode: { uploader: false, video: true } },
+                { type: 'face', name: 'User\ Selfie', mode: { uploader: false, video: true }, shouldRecordVideo: true },
             ],
         },
         // {
@@ -112,44 +112,63 @@ const config = {
         console.log('submit');
         console.log(data);
 
-        (async () => {
-            const {steps} = data;
-            const videoBlob = steps.find(_ => Boolean(_.videoBlob))?.videoBlob;
+        // (async () => {
+        //     const {steps} = data;
+        //     const videoBlob = steps.find(_ => Boolean(_.videoBlob))?.videoBlob;
+        //
+        //     if (!videoBlob) {
+        //         console.warn('No videoBlob found in steps');
+        //         return;
+        //     }
+        //
+        //     const formData = new FormData();
+        //     formData.append('file', videoBlob, 'recording.webm');
+        //
+        //     const API_URL = 'https://datasink.idscan.net/DataSet';
+        //
+        //     const url = new URL(API_URL);
+        //     url.searchParams.append('idempotencyKey', Date.now().toString());
+        //
+        //     url.searchParams.append('fileExtension', '.webm');
+        //
+        //     try {
+        //         const response = await fetch(url, {
+        //             headers: {
+        //                 'Authorization': 'Bearer 2214B3F4-208B-40F3-92BE-782E99E4F9E5',
+        //             },
+        //             method: 'POST',
+        //             body: formData,
+        //         });
+        //
+        //         if (!response.ok) {
+        //             throw new Error(`HTTP error! status: ${response.status}`);
+        //         }
+        //     } catch (error) {
+        //         console.error('Error uploading file:', error);
+        //         alert(`Error uploading file: ${error.message}`);  // Шаблонная строка для объединения
+        //     }
+        // })()
 
-            if (!videoBlob) {
-                console.warn('No videoBlob found in steps');
-                return;
-            }
+        function saveBlobAsWebM(blob, fileName = 'video.webm') {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
 
-            const formData = new FormData();
-            formData.append('file', videoBlob, 'recording.webm');
+            a.href = url;
+            a.download = fileName;
+            a.style.display = 'none';
 
-            const API_URL = 'https://datasink.idscan.net/DataSet';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
 
-            const url = new URL(API_URL);
-            url.searchParams.append('idempotencyKey', Date.now().toString());
+            URL.revokeObjectURL(url);
+        }
 
-            url.searchParams.append('fileExtension', '.webm');
+        const {steps} = data;
 
-            try {
-                const response = await fetch(url, {
-                    headers: {
-                        'Authorization': 'Bearer 2214B3F4-208B-40F3-92BE-782E99E4F9E5',
-                    },
-                    method: 'POST',
-                    body: formData,
-                });
+        const videoBlob = steps.filter(_ => Boolean(_.videoBlob));
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-            } catch (error) {
-                console.error('Error uploading file:', error);
-                alert(`Error uploading file: ${error.message}`);  // Шаблонная строка для объединения
-            }
-        })()
-
-
+        videoBlob.forEach(_ => saveBlobAsWebM(_.videoBlob));
     },
     onChange(data) {
         console.log('onChange');
