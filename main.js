@@ -29,84 +29,8 @@ const config = {
             type: 'DL',
             steps: [
                 { type: 'front', name: 'Document\'s Front Image', mode: { uploader: false, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000, shouldRecordVideo: true },
-                // { type: 'pdf', name: 'Document\'s Back Image', enableFourCornerCapture: true, enableDesktopNotification: true, mode: { uploader: false, video: true }, autocaptureDelay: 0 },
-                { type: 'face', name: 'User\ Selfie', mode: { uploader: false, video: true }, shouldRecordVideo: true },
             ],
         },
-        // {
-        //     type: 'IC',
-        //     steps: [
-        //         { type: 'front', name: 'Document\'s Front Image', mode: { uploader: true, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000 },
-        //         { type: 'pdf', name: 'Document\'s Back Image', enableFourCornerCapture: true, enableDesktopNotification: true, mode: { uploader: true, video: true }, autocaptureDelay: 0 },
-        //         { type: 'face', name: 'User\ Selfie', mode: { uploader: true, video: true } },
-        //     ],
-        // },
-        // {
-        //   type: 'DL',
-        //   steps: [
-        //     { type: 'front',
-        //         name: 'Document\'s Front Image',
-        //         mode: { uploader: false, video: true },
-        //         enableDesktopNotification: true,
-        //         autocaptureDelay: 2000
-        //     },
-        //     { type: 'pdf',
-        //         name: 'Document\'s Back Image',
-        //         enableFourCornerCapture: true,
-        //         enableDesktopNotification: true,
-        //         mode: { uploader: false, video: true },
-        //         autocaptureDelay: 0
-        //     },
-        //     { type: 'face',
-        //         name: 'User\ Selfie',
-        //         mode: { uploader: false, video: true },
-        //     },
-        //   ],
-        // },
-        // {
-        //   type: 'VIN',
-        //   steps:[
-        //     { type: 'photo', name: 'VIN' },
-        //   ],
-        // },
-        // {
-        //     type: 'Barcode',
-        //     steps:[
-        //         { type: 'barcode', name: 'Barcode detection' },
-        //     ],
-        // },
-        // {
-        //     type: 'Passport',
-        //     steps:[
-        //         // { type: 'front', name: 'Passport Front' },
-        //         { type: 'mrz', name: 'Passport MRZ', enableFourCornerCapture: true, mode: { uploader: true, video: true } },
-        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-        //     ],
-        // },
-        // {
-        //     type: 'PassportCard',
-        //     steps:[
-        //         { type: 'front', name: 'Document Card Front' },
-        //         { type: 'mrz', name: 'Passport Card Back', enableFourCornerCapture: true, mode: { uploader: true, video: true } },
-        //         { type: 'face', name: 'User Selfie', mode: { uploader: true, video: true } }
-        //     ],
-        // },
-        // {
-        //     type: 'GreenCard',
-        //     steps:[
-        //         { type: 'front', name: 'Document Front' },
-        //         { type: 'mrz', name: 'Passport Back', mode: { uploader: true, video: true } },
-        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-        //     ],
-        // },
-        // {
-        //     type: 'InternationalId',
-        //     steps: [
-        //         { type: 'front', name: 'Document Front', mode: { uploader: true, video: true }, enableDesktopNotification: true, autocaptureDelay: 3000 },
-        //         { type: 'back', name: 'International Back', enableFourCornerCapture: true, mode: { uploader: true, video: true } },
-        //         { type: 'face', name: 'Face', mode: { uploader: true, video: true } }
-        //     ]
-        // },
     ],
     submit(data) {
         console.log('submit');
