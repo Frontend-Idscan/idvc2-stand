@@ -28,7 +28,8 @@ const config = {
         {
             type: 'DL',
             steps: [
-                { type: 'front', name: 'Document\'s Front Image', mode: { uploader: false, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000, shouldRecordVideo: true },
+                { type: 'front', name: 'Document\'s Front Image', mode: { uploader: false, video: true }, enableDesktopNotification: true, autocaptureDelay: 2000},
+                { type: 'face', name: 'User\ Selfie', mode: { uploader: true, video: true  }},
             ],
         },
     ],
