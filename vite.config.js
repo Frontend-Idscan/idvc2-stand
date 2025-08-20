@@ -4,7 +4,13 @@ import mkcert from 'vite-plugin-mkcert'
 
 export default defineConfig({
   server: { https: true, port: 5012 },
-  plugins: [
+  build: {
+    rollupOptions: {
+      external: [        /^@idscan:.*/,
+      ],
+    }
+  },
+    plugins: [
     copy({
       targets: [
         { src: 'node_modules/@idscan/idvc2/dist/networks/*', dest: 'public/networks' },
